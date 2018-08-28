@@ -106,7 +106,7 @@ func (self *RedisHandle) DoPipeline(cmds []ClusterTransaction) (reply interface{
 
 	if !wasError {
 		var newErr error
-		for c := 0; c < (len(cmds) - 1); c++ {
+		for c := 0; c < len(cmds); c++ {
 			rets[c], newErr = rc.Receive()
 			if newErr != nil {
 				return rets, newErr
